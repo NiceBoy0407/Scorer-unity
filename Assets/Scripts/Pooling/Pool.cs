@@ -15,7 +15,6 @@ namespace Pooling
 		public Pool(GameObject prefab, int initialQty)
 		{
 			this.prefab = prefab;
-
 			inactive = new Stack<GameObject>(initialQty);
 		}
 
@@ -26,7 +25,6 @@ namespace Pooling
 			{
 				obj = GameObject.Instantiate(prefab, pos, rot);
 				obj.name = prefab.name + " (" + (nextId++) + ")";
-
 				obj.AddComponent<PoolMember>().myPool = this;
 			}
 			else
