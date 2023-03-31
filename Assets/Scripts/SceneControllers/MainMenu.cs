@@ -15,7 +15,6 @@ namespace SceneControllers
 
         [Header("Animations")]
         [SerializeField] private float animationsDuration;
-
         [Header("References")]
         [SerializeField] private Button playButton;
         [SerializeField] private Text gemAmountText;
@@ -23,20 +22,17 @@ namespace SceneControllers
         #endregion
 
         private static string GEM_TEMPLATE_TEXT = " gems";
-
         public static string PLAYER_PREFS_GEM_KEY = "gems";
 
         protected void Start()
         {
             name = "MainMenu";
-
             StartCoroutine(EnterAnimationCoroutine(animationsDuration));
 
             playButton.onClick.AddListener(() => SceneTransitioner.Instance.OpenScene("Game", args: new Dictionary<string, object>()
             {
                 ["maxScore"] = 3
             }));
-
             gemAmountText.text = 
                 PlayerPrefs.GetInt(PLAYER_PREFS_GEM_KEY, 0).ToString() + GEM_TEMPLATE_TEXT;
         }
